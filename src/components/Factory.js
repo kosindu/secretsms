@@ -1,14 +1,42 @@
 import { useState } from 'react';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../firebase-config';
+import CryptoJS from 'crypto-js/';
 
 const Factory = () => {
   const maxCount = 50;
-  const [message, setMessage] = useState('');
   const [count, setCount] = useState(0);
+  const [message, setMessage] = useState('');
   const [generatedLink, setGeneratedLink] = useState('');
 
-  const generateLink = () => {
-    const link = `http://${message}.com`;
-    setGeneratedLink(link);
+  const messagesCollectionRef = collection(db, 'messages');
+
+  const getRandomKey = () => {
+    const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
+    return uint32.toString(16);
+  };
+
+  const getEncryptedMessage = (message, key) => {
+    return CryptoJS.AES.encrypt(message, key);
+  };
+
+  const generateLink = (dbId, key) => {
+    setGeneratedLink(`${window.location.href}message/${dbId}/${key}`);
+  };
+
+  const createMessage = async (encMsg, key) => {
+    await addDoc(messagesCollectionRef, { encMsg, key }).then((docRef) => {
+      generateLink(docRef.id, key);
+    });
+  };
+
+  const uploadToDB = () => {
+    const key = getRandomKey();
+    const encMsg = getEncryptedMessage(message, key);
+    // const decrypted = CryptoJS.AES.decrypt(encMsg, key);
+    // console.log(decrypted.toString(CryptoJS.enc.Utf8));
+    const dbId = createMessage(encMsg.toString(), key);
+    // setGeneratedLink(decrypted.toString(CryptoJS.enc.Utf8));
   };
 
   return (
@@ -39,14 +67,17 @@ const Factory = () => {
             <button
               className="factory-btn"
               type="submit"
-              onClick={() => generateLink()}
+              onClick={() => uploadToDB()}
               disabled={count > maxCount ? true : false}
             >
               generate secret link
             </button>
           </div>
           {generatedLink && (
-            <div className="factory-generated__link">{generatedLink}</div>
+            <>
+              <div className="factory-generated__link">{generatedLink}</div>
+              <a href={generatedLink}>click here</a>
+            </>
           )}
         </div>
       </div>

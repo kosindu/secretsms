@@ -170,6 +170,7 @@ body {
   background-color: #333;
   border: 1px solid #3498db;
   border-radius: 3px;
+  resize: none;
 }
 
 .factory-btn__container {
@@ -199,6 +200,31 @@ body {
   background-color: #e74c3c;
   border: 1px solid #e74c3c;
   color: #eee;
+}
+
+#message-box {
+  margin-bottom: 100px;
+}
+
+.message-box__inner {
+  padding: 25px;
+  background-color: #222;
+  border-radius: 5px;
+}
+
+.message-box__text {
+  color: #3498db;
+  margin-bottom: 20px;
+}
+
+.message-box__inner .secret-message {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.message-box__inner .secret-message__seen {
+  color: #e74c3c;
 }
 
 #footer {
