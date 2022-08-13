@@ -1,38 +1,219 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #333;
+  color: #eee;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo {
+  position: relative;
+  display: inline-block;
+  border: 3px solid #3498db;
+  background-color: #eee;
+}
+
+.logo-sq__big {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 75%;
+  width: 75%;
+  background-color: #3498db;
+}
+.logo-sq__small {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  height: 50%;
+  width: 50%;
+  background-color: #eee;
+  border: 1px solid #3498db;
+}
+
+#navbar {
+  border-bottom: 1px solid #3498db;
+}
+
+.nav {
+  padding: 20px 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-logo a {
+  text-decoration: none;
+  display: inline-block;
+  color: #3498db;
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links li a {
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  color: #eee;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-links li a:hover {
+  color: #3498db;
+}
+
+.nav-links li:last-child a {
+  padding-right: 30px;
+}
+
+.nav-links li:last-child a::after,
+.nav-links li:last-child a::before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 25px;
+  height: 1px;
+  background-color: #eee;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-links li:last-child a::before {
+  top: 25%;
+}
+
+.nav-links li:last-child a::after {
+  top: 75%;
+}
+
+.nav-links li a:hover::before,
+.nav-links li a:hover::after {
+  transform: rotateZ(180deg);
+  background-color: #3498db;
+}
+
+#header {
+  padding: 80px 0;
+}
+
+.header-main {
+  display: inline-block;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  color: #3498db;
+  font-size: 100px;
+  font-weight: 400;
+}
+
+.header-sub {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.header-sub span {
+  position: relative;
+  font-weight: 700;
+  padding: 0 5px;
+  display: inline-block;
+  background-color: #3498db;
+  border-radius: 5px;
+  transform: rotateZ(-5deg);
+  z-index: 5;
+  border: 2px solid #eee;
+}
+
+#factory {
+  margin-bottom: 100px;
+}
+
+.factory-inner {
+  padding: 25px;
+  background-color: #222;
+  border-radius: 5px;
+}
+
+.factory-type {
+  display: flex;
+  justify-content: space-between;
+  color: #3498db;
+}
+
+.factory-type .char-count {
+  color: #eee;
+  border-bottom: 1px solid #3498db;
+}
+
+.factory-input__model {
+  margin: 20px 0;
+}
+
+.factory-input {
+  padding: 20px 15px;
+  width: 100%;
+  color: #eee;
+  font-size: 15px;
+  background-color: #333;
+  border: 1px solid #3498db;
+  border-radius: 3px;
+}
+
+.factory-btn__container {
+  text-align: right;
+}
+
+.factory-btn {
+  cursor: pointer;
+  padding: 10px 15px;
+  color: #3498db;
+  background-color: transparent;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid #3498db;
+  transition: all 0.2s ease-in-out;
+}
+
+.factory-btn:hover {
+  color: #eee;
+  background-color: #3498db;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.8);
+}
+
+.factory-btn:disabled {
+  cursor: not-allowed;
+  background-color: #e74c3c;
+  border: 1px solid #e74c3c;
+  color: #eee;
+}
+
+#footer {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #3498db;
+}
+
+.footer-slogan {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.footer-slogan a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: 400;
 }
