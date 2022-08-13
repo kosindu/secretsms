@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="container">
         <div className="nav">
           <h1 className="nav-logo">
-            <a href="#">
+            <a href="/">
               Secret SMS <Logo height={30} width={30} />
             </a>
           </h1>
