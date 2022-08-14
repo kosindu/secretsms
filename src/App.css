@@ -219,6 +219,7 @@ body {
   background-color: #333;
   padding: 10px;
   border-radius: 3px;
+  word-wrap: break-word;
   /* text-align: center; */
   font-weight: 4400;
   border: 1px solid #fff;
@@ -241,6 +242,7 @@ body {
 }
 
 .message-box__inner .secret-message {
+  word-wrap: break-word;
   background-color: #333;
   padding: 15px;
   border-radius: 5px;
@@ -265,4 +267,72 @@ body {
   text-decoration: none;
   color: #3498db;
   font-weight: 400;
+}
+
+.loader {
+  position: relative;
+  height: 19px;
+  width: 100%;
+  background-color: #2ecc71;
+  overflow: hidden;
+}
+
+.loader::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-color: rgba(238, 238, 238, 0.5);
+  transform: skewX(-10deg);
+  animation: moveInLeft 1.2s linear infinite;
+}
+
+@keyframes moveInLeft {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .nav {
+    justify-content: center;
+  }
+
+  .nav-logo a {
+    font-size: 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  #header {
+    padding: 20px 0;
+  }
+  .header-inner {
+    text-align: center;
+  }
+
+  .header-inner .header-main {
+    margin-right: 0;
+    margin-bottom: 30px;
+    font-size: 45px;
+  }
+
+  .header-inner .header-sub {
+    margin: 20px 0;
+    font-size: 25px;
+  }
+
+  #factory {
+    margin-bottom: 50px;
+  }
+
+  #footer .footer-slogan {
+    font-size: 20px;
+  }
 }
